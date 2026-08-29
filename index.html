@@ -7,7 +7,14 @@
   <body>
     <h1>Plain HTML host page</h1>
     <p>No Vue anywhere in this page — the widget below is a self-contained custom element.</p>
-    <shoelace-mfe-widget></shoelace-mfe-widget>
+    <shoelace-mfe-widget rating="0"></shoelace-mfe-widget>
     <script type="module" src="/src/main.js"></script>
+    <script type="module">
+      document
+        .querySelector('shoelace-mfe-widget')
+        .addEventListener('rating-submit', (event) => {
+          console.log('rating-submit', event.detail[0])
+        })
+    </script>
   </body>
 </html>

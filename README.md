@@ -41,6 +41,33 @@ directly:
 Verified working with Node 20 / npm 11 (`npm install && npm run build`
 succeeds, `dist/shoelace-vue-mfe.js` is emitted).
 
+## Public API
+
+The widget's contract is plain HTML attributes and a native `CustomEvent` —
+nothing Vue-specific leaks to the host page.
+
+```html
+<shoelace-mfe-widget rating="3" disabled></shoelace-mfe-widget>
+<script type="module" src="/shoelace-vue-mfe.js"></script>
+<script type="module">
+  document
+    .querySelector('shoelace-mfe-widget')
+    .addEventListener('rating-submit', (event) => {
+      console.log(event.detail[0].rating) // e.g. 3
+    })
+</script>
+```
+
+- **`rating`** (attribute, number, default `0`) — sets the initial star rating.
+- **`disabled`** (attribute, boolean) — disables the rating control and the
+  submit button.
+- **`rating-submit`** — dispatched on the host element when Submit is
+  clicked; `event.detail[0]` is `{ rating: number }`.
+
+Covered by `npm test` (`src/widget.test.js`), which mounts the compiled
+custom element in jsdom and asserts on the attributes and the dispatched
+event — the same surface a non-Vue host page would use.
+
 ## What this is (and isn't)
 
 This is a from-scratch demo built to match the repo name, not a real

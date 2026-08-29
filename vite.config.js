@@ -10,5 +10,8 @@ export default defineConfig({
       fileName: () => 'shoelace-vue-mfe.js',
       formats: ['es']
     }
+  },
+  test: {
+    environment: 'jsdom'
   }
 })

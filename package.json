@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run"
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.15.1",
@@ -15,6 +16,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
-    "vite": "^5.2.8"
+    "jsdom": "^25.0.1",
+    "vite": "^5.2.8",
+    "vitest": "^2.1.9"
   }
 }
