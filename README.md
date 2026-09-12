@@ -7,6 +7,10 @@ output is one `<script type="module">` tag that any host page can drop in —
 no Vue required on the host side, no build-time coupling between host and
 widget.
 
+**Live demo:** https://mrnednick.github.io/shoelace-vue-mfe/ — a plain HTML
+page with no Vue on it, loading the built widget the same way any host page
+would.
+
 ## Stack
 
 - Vue 3 (`defineCustomElement`, single-file component compiled with
