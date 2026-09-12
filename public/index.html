@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>shoelace-vue-mfe demo</title>
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      body {
+        max-width: 640px;
+        margin: 3rem auto;
+        padding: 0 1.5rem;
+        font-family: system-ui, sans-serif;
+        line-height: 1.5;
+      }
+      code {
+        background: rgba(0, 0, 0, 0.06);
+        padding: 0.1em 0.35em;
+        border-radius: 0.25em;
+      }
+      #log {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>shoelace-vue-mfe</h1>
+    <p>
+      Plain HTML host page — no Vue anywhere on it. The widget below is a
+      single <code>&lt;script type="module"&gt;</code> tag: a Vue 3 component
+      compiled to a framework-agnostic custom element, styled with
+      <a href="https://shoelace.style/" target="_blank" rel="noopener">Shoelace</a>.
+    </p>
+
+    <shoelace-mfe-widget rating="0"></shoelace-mfe-widget>
+    <p id="log"></p>
+
+    <script type="module" src="./shoelace-vue-mfe.js"></script>
+    <script type="module">
+      document
+        .querySelector('shoelace-mfe-widget')
+        .addEventListener('rating-submit', (event) => {
+          document.getElementById('log').textContent =
+            'rating-submit fired: ' + JSON.stringify(event.detail[0])
+        })
+    </script>
+  </body>
+</html>
